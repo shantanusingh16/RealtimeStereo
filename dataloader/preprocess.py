@@ -35,7 +35,7 @@ def scale_random_crop(input_size, scale_size=None, normalize=__imagenet_stats):
         transforms.ToTensor(),
         transforms.Normalize(**normalize),
     ]
-    if scale_size != input_size:
+    if scale_size is not None and scale_size != input_size:
         t_list = [transforms.Scale(scale_size)] + t_list
 
     transforms.Compose(t_list)

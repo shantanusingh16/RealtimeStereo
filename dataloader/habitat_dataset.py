@@ -70,7 +70,7 @@ class HabitatDataset(data.Dataset):
            dataL = np.nan_to_num(dataL, posinf=0, neginf=0)
            dataL = dataL[y1:y1 + th, x1:x1 + tw]
 
-           processed = preprocess.get_transform(augment=False)  
+           processed = preprocess.get_transform(augment=True)  
            left_img = processed(left_img)
            right_img = processed(right_img)
 
@@ -82,7 +82,7 @@ class HabitatDataset(data.Dataset):
            dataL = (self.baseline * self.focal_length)/dataL
            dataL = np.nan_to_num(dataL, posinf=0, neginf=0)
 
-           processed = preprocess.scale_transform(scale_size=self.get_scale_size()) # preprocess.get_transform(augment=False)
+           processed = preprocess.get_transform(scale_size=self.get_scale_size()) # preprocess.get_transform(augment=False)
            left_img = processed(left_img)
            right_img = processed(right_img)
 
